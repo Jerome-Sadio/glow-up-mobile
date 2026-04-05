@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #000103;
+  --color-primary: #00C2FF;
+  --color-secondary: #9D00FF;
+  --color-accent: #FF0055;
+  --color-surface: rgba(255, 255, 255, 0.05);
+  --color-surface-border: rgba(255, 255, 255, 0.1);
+
+  --shadow-neon-blue: 0 0 10px #00C2FF, 0 0 20px rgba(0, 194, 255, 0.4);
+  --shadow-neon-purple: 0 0 10px #9D00FF, 0 0 20px rgba(157, 0, 255, 0.4);
+  --shadow-neon-accent: 0 0 10px #FF0055, 0 0 20px rgba(255, 0, 85, 0.4);
+
+  --background-image-hunter-gradient: linear-gradient(135deg, #00C2FF 0%, #9D00FF 100%);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-background text-white font-sans overflow-x-hidden min-h-screen selection:bg-primary/30;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(0, 194, 255, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(157, 0, 255, 0.03) 0%, transparent 40%);
+}
+
+.glass {
+  @apply bg-surface backdrop-blur-xl border border-white/10 rounded-2xl;
+}
+
+.glass-dark {
+  @apply bg-black/40 backdrop-blur-2xl border border-white/5 rounded-2xl;
+}
+
+.neon-border-blue {
+  @apply border border-primary/50 shadow-neon-blue;
+}
+
+.neon-border-purple {
+  @apply border border-secondary/50 shadow-neon-purple;
+}
+
+.neon-text-blue {
+  text-shadow: 0 0 10px rgba(0, 194, 255, 0.8), 0 0 20px rgba(0, 194, 255, 0.4);
+}
+
+.neon-text-purple {
+  text-shadow: 0 0 10px rgba(157, 0, 255, 0.8), 0 0 20px rgba(157, 0, 255, 0.4);
+}
+
+.hunter-text {
+  @apply bg-hunter-gradient bg-clip-text text-transparent font-bold;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 hover:bg-primary/40 rounded-full transition-colors;
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; filter: blur(20px); }
+  50% { opacity: 0.8; filter: blur(25px); }
+}
+
+@keyframes scan {
+  from { top: -100%; }
+  to { top: 100%; }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-scan {
+  animation: scan 4s linear infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotate-slow 20s linear infinite;
+}
